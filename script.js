@@ -49,9 +49,17 @@ async function checkWeather(city) {
 	temperature.innerText = data.main.temp + "°C";
 	humidity.innerText = data.main.humidity + "%";
 	wind.innerText = data.wind.speed + " km/h";
+	cityName.value ="";
 }
 
 // Search Button
 search.addEventListener('click', () => {
 	checkWeather(cityName.value);
+});
+
+const clickSearch = document.querySelector('.js-place-name');
+clickSearch.addEventListener('keydown',(event) =>{
+	if(event.key === "Enter"){
+	   checkWeather(cityName.value);;
+	}
 });
