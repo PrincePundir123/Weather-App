@@ -1,4 +1,4 @@
-*{
+/* *{
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
@@ -101,10 +101,193 @@ body{
 .humidity-amount,.wind-amount{
      font-size: 25px;
      font-weight: 360;
-     /* width: 100px;
-     padding-left: 20px; */
+     
 }
 .wind-content,.humidity-content{
     width: 90px;
      margin-left: 17px;
+} */
+ /* ================== ROOT & RESET ================== */
+:root {
+    --bg-gradient: linear-gradient(135deg, #00c6ff, #0072ff);
+    --card-bg: rgba(255, 255, 255, 0.95);
+    --text-main: #222;
+    --text-sub: #555;
+    --accent: #0072ff;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-gradient: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        --card-bg: rgba(20, 20, 20, 0.92);
+        --text-main: #f1f1f1;
+        --text-sub: #bdbdbd;
+        --accent: #4facfe;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", "Segoe UI", sans-serif;
+}
+
+/* ================== BODY ================== */
+body {
+    min-height: 100vh;
+    background: var(--bg-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* ================== CONTAINER ================== */
+.container {
+    width: 100%;
+    max-width: 420px;
+    background: var(--card-bg);
+    backdrop-filter: blur(15px);
+    border-radius: 24px;
+    padding: 25px 22px 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.container:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+}
+
+/* ================== SEARCH BAR ================== */
+.search-bar {
+    display: flex;
+    gap: 12px;
+}
+
+.search-bar input {
+    flex: 1;
+    height: 48px;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    padding: 0 18px;
+    font-size: 15px;
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--text-main);
+}
+
+.search-bar input::placeholder {
+    color: var(--text-sub);
+}
+
+.search-bar button {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    background: var(--accent);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-bar button:hover {
+    transform: scale(1.12) rotate(10deg);
+    box-shadow: 0 10px 25px rgba(0, 114, 255, 0.5);
+}
+
+.search-bar button img {
+    width: 18px;
+    filter: invert(1);
+}
+
+/* ================== WEATHER ================== */
+.weather-bar {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.weather-bar img {
+    width: 120px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+.temp {
+    font-size: 52px;
+    font-weight: 600;
+    margin-top: 10px;
+    color: var(--text-main);
+}
+
+.place {
+    font-size: 22px;
+    color: var(--text-sub);
+    margin-top: 6px;
+}
+
+/* ================== HUMIDITY & WIND ================== */
+.huwind {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 35px;
+}
+
+.humidity-bar,
+.wind-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.3s ease;
+}
+
+.humidity-bar:hover,
+.wind-bar:hover {
+    transform: translateY(-4px);
+}
+
+.humidity-col img,
+.wind-col img {
+    width: 38px;
+}
+
+.humidity-content,
+.wind-content {
+    text-align: left;
+}
+
+.humidity-amount,
+.wind-amount {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.humidity-content p:last-child,
+.wind-content p:last-child {
+    font-size: 13px;
+    color: var(--text-sub);
+}
+
+/* ================== MOBILE OPTIMIZATION ================== */
+@media (max-width: 480px) {
+    .temp {
+        font-size: 46px;
+    }
+
+    .place {
+        font-size: 20px;
+    }
+
+    .huwind {
+        gap: 10px;
+    }
 }
